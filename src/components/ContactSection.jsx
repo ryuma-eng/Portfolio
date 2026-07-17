@@ -107,6 +107,18 @@ export const ContactSection = () => {
                                             {recipientEmail}
                                         </a>
                                     </div>
+
+                                    <div>
+                                        <p className="text-sm font-semibold uppercase tracking-[0.14em] text-white/55">
+                                            Email
+                                        </p>
+                                        <a
+                                            href={`mailto:${recipientEmail}`}
+                                            className="mt-2 block text-lg font-semibold text-white transition-colors hover:text-cyan-200"
+                                        >
+                                            {recipientEmail}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
