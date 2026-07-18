@@ -58,12 +58,12 @@ export const ContactSection = () => {
         <section
             ref={contactRef}
             id="contact"
-            className="relative flex min-h-[88vh] items-center overflow-hidden px-6 pb-16 pt-16 lg:min-h-[92vh]"
+            className="relative flex min-h-[88vh] items-center overflow-hidden pb-16 pt-16 lg:min-h-[92vh]"
         >
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.14),_transparent_32%),radial-gradient(circle_at_bottom_right,_rgba(139,92,246,0.16),_transparent_30%)]" />
             <div className="absolute left-1/2 top-24 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl" />
 
-            <div className="container mx-auto max-w-screen-2xl">
+            <div className="container">
 
                 <div className={`text-center transition-all duration-700 ease-out mb-12 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
                     <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl">

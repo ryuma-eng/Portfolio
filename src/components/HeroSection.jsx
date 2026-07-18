@@ -102,9 +102,9 @@ export const HeroSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <section ref={heroRef} id="hero" className="relative min-h-[88vh] flex items-center px-6 pt-20 pb-10 lg:min-h-[92vh]">
-      <div className="container mx-auto max-w-screen-2xl">
+    return (
+    <section ref={heroRef} id="hero" className="relative min-h-[88vh] flex items-center pt-20 pb-10 lg:min-h-[92vh]">
+      <div className="container">
         <div className="grid items-center gap-16 lg:grid-cols-[1.05fr_0.95fr]">
           <div
             className={`max-w-2xl text-left transition-all duration-700 ease-out ${

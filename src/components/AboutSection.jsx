@@ -8,7 +8,7 @@ import resumePdf from "../assets/DAVID_RICARDO_JOSE_C_RESUME (1).pdf";
 const stats = [
     {
         icon: FolderOpen,
-        value: "5",
+        value: "3",
         label: "Total Projects",
         description: "Innovative web solutions crafted",
     },
@@ -53,8 +53,8 @@ export const AboutSection = () => {
     }, []);
 
     return (
-        <section ref={aboutRef} id="about" className="relative flex min-h-[88vh] items-center px-6 pb-12 pt-16 lg:min-h-[92vh]">
-            <div className="container mx-auto max-w-screen-2xl">
+        <section ref={aboutRef} id="about" className="relative flex min-h-[88vh] items-center pb-12 pt-16 lg:min-h-[92vh]">
+            <div className="container">
                 <div className="max-w-none">
                     <div className={`text-center transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
                         <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl">

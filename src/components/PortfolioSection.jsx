@@ -247,7 +247,7 @@ const PortfolioSection = () => {
         }
 
         return (
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-6">
+            <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 2xl:grid-cols-8">
                 {techStacks.map((tech, index) => {
                     const Icon = tech.icon;
 
@@ -274,9 +274,9 @@ const PortfolioSection = () => {
         <section
             ref={portfolioRef}
             id="portfolio"
-            className="relative px-6 py-24 sm:py-28"
+            className="relative py-24 sm:py-28"
         >
-            <div className="container relative mx-auto max-w-screen-2xl">
+            <div className="container relative">
                 <div className={`mx-auto max-w-3xl text-center transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}>
                     <h2 className="text-4xl font-black tracking-tight text-white sm:text-5xl">
                         Portfolio Showcase
@@ -287,7 +287,7 @@ const PortfolioSection = () => {
                 </div>
 
                 <div className={`mt-10 rounded-[2rem] border border-white/10 bg-[#0b1027] p-3 backdrop-blur-md transition-all duration-700 ease-out ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-                    <div className="grid gap-3 md:grid-cols-3">
+                    <div className="flex gap-3 overflow-x-auto pb-1 md:grid md:grid-cols-3 md:overflow-visible md:pb-0">
                         {tabs.map(({ id, label, icon: Icon }) => {
                             const isActive = activeTab === id;
 
@@ -296,14 +296,14 @@ const PortfolioSection = () => {
                                     key={id}
                                     type="button"
                                     onClick={() => handleTabChange(id)}
-                                    className={`flex items-center justify-center gap-3 rounded-[1.2rem] px-5 py-4 text-sm font-semibold transition-all duration-300 ${
+                                        className={`inline-flex min-w-16 flex-1 items-center justify-center rounded-[1.2rem] px-4 py-4 text-sm font-semibold transition-all duration-300 md:min-w-0 md:gap-3 md:px-5 ${
                                         isActive
                                             ? "bg-white/10 text-white"
                                             : "text-white/65 hover:bg-white/5 hover:text-white"
                                     }`}
                                 >
-                                    <Icon className="h-4 w-4" />
-                                    {label}
+                                        <Icon className="h-5 w-5 md:h-4 md:w-4" />
+                                        <span className="sr-only md:not-sr-only">{label}</span>
                                 </button>
                             );
                         })}
