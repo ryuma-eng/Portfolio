@@ -85,7 +85,6 @@ const techStacks = [
     { name: "React", icon: FaReact, color: "#61DAFB" },
     { name: "Vite", icon: SiVite, color: "#646CFF" },
     { name: "MySQL", icon: SiMysql, color: "#4479A1" },
-    { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
     { name: "Python", icon: SiPython, color: "#3776AB" },
     { name: "C++", icon: TbBrandCpp, color: "#00599C" },
     { name: "Java", icon: FaJava, color: "#ED8B00" },
