@@ -11,7 +11,7 @@ export default defineConfig({
     proxy: {
       '/api': {
         // target: 'http://127.0.0.1:8000',
-        target: 'https://portfolio-backend-upxa.onrender.com',
+        target: 'https://portfolio-backend-15nl.onrender.com',
         changeOrigin: true,
         headers: {
           Accept: 'application/json',
