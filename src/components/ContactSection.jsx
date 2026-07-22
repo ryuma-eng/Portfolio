@@ -50,14 +50,26 @@ export const ContactSection = () => {
         SetIsSending(true)
         try {
 
-            const res = await fetch('/api/contact-mail', {
-                method: 'POST',
-                headers: {
-                    'Content-type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
+            // const res = await fetch('/api/contact-mail', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-type': 'application/json',
+            //         'Accept': 'application/json'
+            //     },
+            //     body: JSON.stringify(formData)
+            // })
+
+            const res = await fetch(
+                `${import.meta.env.VITE_API_URL}/api/contact-mail`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                }
+            );
 
             const data = await res.json();
 
