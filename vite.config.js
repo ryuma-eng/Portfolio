@@ -10,7 +10,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8000',
+        // target: 'http://127.0.0.1:8000',
+        target: 'https://portfolio-backend-upxa.onrender.com',
         changeOrigin: true,
         headers: {
           Accept: 'application/json',
@@ -24,5 +25,5 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     }
   },
-  base: process.env.VITE_BASE_PATH || "/Portfolio",
+  //base: process.env.VITE_BASE_PATH || "/Portfolio",
 })
