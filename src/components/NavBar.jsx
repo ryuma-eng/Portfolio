@@ -103,7 +103,7 @@ export const NavBar = () => {
 
     return (
         <nav className={cn(
-            "fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-[#050816]/85 backdrop-blur-xl transition-all duration-300",
+            "fixed inset-x-0 top-0 z-[60] border-b border-white/5 bg-[#050816]/85 backdrop-blur-xl transition-all duration-300",
             isScrolled ? "py-3 shadow-[0_10px_30px_rgba(0,0,0,0.18)]" : "py-4"
         )}>
 

@@ -1,17 +1,12 @@
 
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, BadgeCheck, Code2, ExternalLink, FolderOpen, Layers3, Sparkles } from "lucide-react";
+import { ArrowRight, BadgeCheck, FolderOpen, Layers3, ExternalLink } from "lucide-react";
 import {
-    SiBootstrap,
-    SiGit,
     SiLaravel,
-    SiMongodb,
     SiMysql,
-    SiPhp,
     SiPostman,
     SiPython,
-    SiReact,
     SiWordpress,
     SiTailwindcss,
     SiVite,
@@ -24,6 +19,7 @@ import cert3 from "../assets/portfolio/certificates/3.png";
 import inventrackImg from "../assets/portfolio/projects/inventrack.png";
 import skincipherImg from "../assets/portfolio/projects/skincipher.png";
 import mitigationMenImg from "../assets/portfolio/projects/mitigationmen.png";
+import { Link, useLocation } from "react-router-dom";
 
 const tabs = [
     { id: "projects", label: "Projects", icon: FolderOpen },
@@ -33,22 +29,28 @@ const tabs = [
 
 const projects = [
     {
+        slug: "inventrack",
         title: "InvenTrack",
         description: "A web-based Point-of-Sale (POS) and Inventory Management System that streamlines sales transactions, tracks inventory in real time, and provides descriptive analytics to support informed business decisions.",
         tags: ["PHP", "Laravel", "Web App"],
         image: inventrackImg,
+        liveDemo: "https://inven-track.com/"
     },
     {
+        slug: "skincipher",   
         title: "SkinCipher",
         description: "A web-based e-commerce platform that enables customers to browse, purchase, and explore skincare products through a seamless, user-friendly shopping experience.",
         tags: ["PHP", "JavaScript", "E-commerce"],
         image: skincipherImg,
+        liveDemo: "https://inven-track.com/"
     },
     {
+        slug: "mitigationmen",
         title: "Mitigation Men",
         description: "A web-based platform that showcases the professional mitigation and restoration services, helping clients learn about the company,request assistance, and connect with the team.",
         tags: ["Business Website", "Service Platform", "Restoration Services"],
         image: mitigationMenImg,
+        liveDemo: "https://inven-track.com/"
     },
     // {
     //     title: "6 Mary's Hotel Management System",
@@ -96,6 +98,7 @@ const techStacks = [
 ];
 
 const PortfolioSection = () => {
+    const location = useLocation(); 
     const portfolioRef = useRef(null);
     const tabSwapTimeoutRef = useRef(null);
     const [activeTab, setActiveTab] = useState("projects");
@@ -184,15 +187,26 @@ const PortfolioSection = () => {
                                     ))}
                                 </div>
 
-                                {/* <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+                                <div className="mt-auto flex items-center justify-between gap-3 pt-5">
                                     <a
-                                        href="#contact"
+                                        href={project.liveDemo}
                                         className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 transition-colors hover:text-white"
                                     >
                                         Live Demo
                                         <ExternalLink className="h-4 w-4" />
                                     </a>
 
+
+                                    <Link 
+                                        to={`/projects/${project.slug}`}
+                                        state={{backgroundLocation: location}}
+                                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-white/20 hover:bg-white/10">
+                                        Details
+                                        <ArrowRight className="h-4 w-4" />
+                                    </Link>
+                                </div>
+
+                                {/* <div className="mt-auto flex justify-end pt-5">
                                     <a
                                         href="#contact"
                                         className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-white/20 hover:bg-white/10"
@@ -201,16 +215,6 @@ const PortfolioSection = () => {
                                         <ArrowRight className="h-4 w-4" />
                                     </a>
                                 </div> */}
-
-                                <div className="mt-auto flex justify-end pt-5">
-                                    <a
-                                        href="#contact"
-                                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-white/20 hover:bg-white/10"
-                                    >
-                                        Details
-                                        <ArrowRight className="h-4 w-4" />
-                                    </a>
-                                </div>
                             </div>
                         </article>
                     ))}
