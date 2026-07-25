@@ -3,9 +3,19 @@ import {
   Mail,
 } from "lucide-react";
 
-import { Laptop } from "lucide-react";
+
 
 import { useEffect, useRef, useState } from "react";
+
+import { 
+  Laptop, 
+  Database, 
+  Globe, 
+  Cloud, 
+  ShieldCheck, 
+  Cpu, 
+  Smartphone 
+} from 'lucide-react';
 
 const BrandGithub = ({ className }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
@@ -211,270 +221,51 @@ export const HeroSection = () => {
           {/* Illustration: one viewBox-scaled SVG, so spacing holds at any
               container width instead of drifting/overlapping like fixed-px divs did */}
           <div
-            className={`relative lg:justify-end transition-all duration-700 ease-out ${
-              isVisible ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            className={`relative w-80 h-80 flex items-center justify-center justify-self-center transition-all duration-1000 ease-out ${
+              isVisible ? "scale-100 opacity-100" : "scale-90 opacity-0"
             }`}
-            style={{ transitionDelay: isVisible ? "240ms" : "0ms" }}
+            style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}
           >
-            <div className="w-full max-w-[760px] xl:max-w-[820px] animate-float">
-              <svg
-                viewBox="0 0 700 500"
-                className="w-full h-full overflow-visible"
-                fill="none"
-              >
+            {/* Floating Inner Wrapper (Starts floating after entrance) */}
+            <div className="relative w-full h-full flex items-center justify-center animate-[float_6s_ease-in-out_infinite]">
+              {/* Outer Decorative Ring */}
+              <div className="absolute inset-0 rounded-full border border-indigo-500/20 animate-[spin_30s_linear_infinite]" />
+              
+              {/* Inner Decorative Ring */}
+              <div className="absolute inset-8 rounded-full border border-dashed border-purple-500/30 animate-[spin_20s_linear_infinite_reverse]" />
 
-                {/* ---------------- CONNECTIONS ---------------- */}
-                {/* 6 lines radiating symmetrically from the laptop at 60° increments */}
+              {/* Central Node */}
+              <div className="relative z-10 p-5 rounded-2xl bg-purple-950/40 border border-purple-500/50 backdrop-blur-md">
+                <Laptop className="w-12 h-12 text-purple-400" />
+              </div>
 
-                <g
-                  className="animate-dash"
-                  stroke="#7dd3fc"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeDasharray="6 8"
-                  opacity=".45"
-                >
-                  <line x1="350" y1="180" x2="350" y2="100"/>  {/* to Database (top) */}
-                  <line x1="430" y1="203.8" x2="482" y2="173.8"/>  {/* to Cloud (top-right) */}
-                  <line x1="430" y1="296.2" x2="482" y2="326.2"/>  {/* to API (bottom-right) */}
-                  <line x1="350" y1="320" x2="350" y2="395"/>  {/* to Mobile (bottom) */}
-                  <line x1="270" y1="296.2" x2="218" y2="326.2"/>  {/* to Security (bottom-left) */}
-                  <line x1="270" y1="203.8" x2="218" y2="173.8"/>  {/* to Globe (top-left) */}
-                </g>
+              {/* Floating Satellite Nodes */}
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 p-3 rounded-xl bg-slate-900/80 border border-indigo-500/40">
+                <Database className="w-6 h-6 text-indigo-400" />
+              </div>
 
-                {/* ---------------- DATABASE (top) ---------------- */}
+              <div className="absolute top-1/4 right-2 p-3 rounded-xl bg-slate-900/80 border border-purple-500/40">
+                <Cloud className="w-6 h-6 text-purple-400" />
+              </div>
 
-                  <g className="animate-float-delay animate-glow" transform="translate(0,-37.5)">
+              <div className="absolute bottom-1/4 right-2 p-3 rounded-xl bg-slate-900/80 border border-indigo-500/40">
+                <Cpu className="w-6 h-6 text-indigo-400" />
+              </div>
 
-                    {/* Top */}
-                    <ellipse
-                      cx="350"
-                      cy="70"
-                      rx="34"
-                      ry="11"
-                      stroke="#60a5fa"
-                      strokeWidth="4"
-                      fill="none"
-                    />
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 p-3 rounded-xl bg-slate-900/80 border border-purple-500/40">
+                <Smartphone className="w-6 h-6 text-purple-400" />
+              </div>
 
-                    {/* Sides */}
-                    <path
-                      d="M316 70V125"
-                      stroke="#60a5fa"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                    />
+              <div className="absolute bottom-1/4 left-2 p-3 rounded-xl bg-slate-900/80 border border-indigo-500/40">
+                <ShieldCheck className="w-6 h-6 text-indigo-400" />
+              </div>
 
-                    <path
-                      d="M384 70V125"
-                      stroke="#60a5fa"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                    />
-
-                    {/* Middle layers */}
-                    <ellipse
-                      cx="350"
-                      cy="88"
-                      rx="34"
-                      ry="11"
-                      stroke="#60a5fa"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-
-                    <ellipse
-                      cx="350"
-                      cy="106"
-                      rx="34"
-                      ry="11"
-                      stroke="#60a5fa"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-
-                    {/* Bottom */}
-                    <ellipse
-                      cx="350"
-                      cy="125"
-                      rx="34"
-                      ry="11"
-                      stroke="#60a5fa"
-                      strokeWidth="4"
-                      fill="none"
-                    />
-
-                  </g>
-
-                {/* ---------------- GLOBE (top-left) ---------------- */}
-
-                <g className="animate-float-slow animate-glow" transform="translate(25.5,25)">
-
-                  <circle
-                    cx="160"
-                    cy="130"
-                    r="36"
-                    stroke="#67e8f9"
-                    strokeWidth="4"
-                  />
-
-                  <ellipse
-                    cx="160"
-                    cy="130"
-                    rx="31"
-                    ry="12"
-                    stroke="#67e8f9"
-                    strokeWidth="2.5"
-                  />
-
-                  <ellipse
-                    cx="160"
-                    cy="130"
-                    rx="14"
-                    ry="36"
-                    stroke="#67e8f9"
-                    strokeWidth="2.5"
-                  />
-
-                  <line
-                    x1="160"
-                    y1="94"
-                    x2="160"
-                    y2="166"
-                    stroke="#67e8f9"
-                    strokeWidth="2.5"
-                  />
-
-                  <line
-                    x1="160"
-                    y1="130"
-                    x2="160"
-                    y2="130"
-                    stroke="#67e8f9"
-                    strokeWidth="2.5"
-                  />
-
-                </g>
-
-                {/* ---------------- CLOUD (top-right) ---------------- */}
-
-                <g className="animate-float-slow animate-glow">
-                  <g transform="translate(30, 30)">
-                    <path
-                      d="
-                        M515 150
-                        H485
-                        C470 150 458 138 458 123
-                        C458 109 469 98 483 96
-                        C488 80 502 70 518 70
-                        C536 70 551 82 555 98
-                        C557 97 560 97 563 97
-                        C578 97 590 109 590 124
-                        C590 138 579 150 565 150
-                        H515
-                      "
-                      fill="none"
-                      stroke="#a5f3fc"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </g>
-                </g>
-
-                {/* ---------------- LAPTOP (center) ---------------- */}
-                {/* NOTE: add this import at the top of the file: */}
-                {/* import { Laptop } from "lucide-react"; */}
-
-                <g className="animate-glow">
-                  <svg x="275" y="175" width="150" height="150" viewBox="0 0 24 24">
-                    <Laptop
-                      stroke="#8b5cf6"
-                      strokeWidth={1.5}
-                      width="100%"
-                      height="100%"
-                      fill="none"
-                    />
-                  </svg>
-                </g>
-
-                {/* ---------------- API (bottom-right) ---------------- */}
-
-                <g className="animate-float-delay animate-glow" transform="translate(-76.5,119)">
-
-                  <rect
-                    x="565"
-                    y="205"
-                    width="92"
-                    height="62"
-                    rx="12"
-                    stroke="#8b5cf6"
-                    strokeWidth="4"
-                  />
-
-                  <text
-                    x="608"
-                    y="245"
-                    fill="#8b5cf6"
-                    fontSize="24"
-                    textAnchor="middle"
-                    fontWeight="700"
-                  >
-                    API
-                  </text>
-
-                </g>
-
-                {/* ---------------- SECURITY (bottom-left) ---------------- */}
-
-                <g className="animate-float-slow animate-glow" transform="translate(65.5,31)">
-
-                  <path
-                    d="M120 275l30 11v24
-                      c0 19-14 36-30 43
-                      c-16-7-30-24-30-43v-24z"
-                    stroke="#67e8f9"
-                    strokeWidth="4"
-                  />
-
-                  <path
-                    d="M108 309l9 9 20-23"
-                    stroke="#67e8f9"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                  />
-
-                </g>
-
-                {/* ---------------- MOBILE (bottom) ---------------- */}
-
-                <g className="animate-float-delay animate-glow" transform="translate(0,22)">
-
-                  <rect
-                    x="322"
-                    y="372"
-                    width="56"
-                    height="92"
-                    rx="10"
-                    stroke="#60a5fa"
-                    strokeWidth="4"
-                  />
-
-                  <text
-                    x="350"
-                    y="426"
-                    fill="#60a5fa"
-                    fontSize="22"
-                    textAnchor="middle"
-                  >
-                    {"</>"}
-                  </text>
-
-                </g>
-
-              </svg>
+              <div className="absolute top-1/4 left-2 p-3 rounded-xl bg-slate-900/80 border border-purple-500/40">
+                <Globe className="w-6 h-6 text-purple-400" />
+              </div>
             </div>
           </div>
+              
         </div>
       </div>
     </section>

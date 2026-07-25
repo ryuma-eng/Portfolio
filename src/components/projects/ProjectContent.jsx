@@ -35,7 +35,7 @@ export const ProjectContent = ({ project, onBack, variant = "page" }) => {
                 </div>
 
                 <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-12">
-                    <div className="order-2 lg:order-1">
+                    <div className="lg:order-1">
                         <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl text-start">
                             {title}
                         </h1>
@@ -115,7 +115,7 @@ export const ProjectContent = ({ project, onBack, variant = "page" }) => {
                         </div>
                     </div>
 
-                    <div className="order-1 flex flex-col gap-6 lg:order-2">
+                    <div className="flex flex-col gap-6 lg:order-2">
                         <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_10px_26px_rgba(0,0,0,0.22)] backdrop-blur-md">
                             <img
                                 src={image}
