@@ -129,18 +129,18 @@ export const ContactSection = () => {
 
             {toast && (
                 <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
-                    <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-[#060a1d]/95 px-10 py-8 shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl animate-in zoom-in-95 duration-300">
-                        
-                        <div 
-                            className={`flex h-14 w-14 items-center justify-center rounded-full border ${
-                                isSent 
-                                    ? "border-cyan-300/20 bg-cyan-400/10" 
+                    <div className="flex flex-col items-center gap-4 rounded-2xl bg-[#060a1d] px-8 py-6 shadow-xl animate-in zoom-in-95 duration-300">
+
+                        <div
+                            className={`flex h-12 w-12 items-center justify-center rounded-full border ${
+                                isSent
+                                    ? "border-cyan-300/20 bg-cyan-400/10"
                                     : "border-red-400/20 bg-red-500/10"
                             }`}
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className={`h-8 w-8 ${
+                                className={`h-7 w-7 ${
                                     isSent ? "text-cyan-300" : "text-red-400"
                                 }`}
                                 fill="none"
@@ -149,33 +149,33 @@ export const ContactSection = () => {
                                 strokeWidth={3}
                             >
                                 {isSent ? (
-                                    <path 
-                                        strokeLinecap="round" 
-                                        strokeLinejoin="round" 
-                                        d="M5 13l4 4L19 7" 
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M5 13l4 4L19 7"
                                     />
                                 ) : (
                                     <>
-                                        <path 
-                                            strokeLinecap="round" 
-                                            strokeLinejoin="round" 
-                                            d="M6 18L18 6" 
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M6 18L18 6"
                                         />
-                                        <path 
-                                            strokeLinecap="round" 
-                                            strokeLinejoin="round" 
-                                            d="M6 6l12 12" 
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M6 6l12 12"
                                         />
                                     </>
                                 )}
                             </svg>
                         </div>
 
-                        <p className="text-lg font-bold text-white">
+                        <p className="text-sm font-semibold text-white">
                             {toast}
                         </p>
 
-                        <p className="text-sm text-white/50 text-center">
+                        <p className="text-xs text-center text-white/50">
                             {toastSubtitle}
                         </p>
                     </div>
