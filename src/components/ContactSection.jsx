@@ -12,6 +12,8 @@ export const ContactSection = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     const [toast, setToast] = useState("");
+    const [toastSubtitle, setToastSubtitle] = useState("")
+    const [isSent, setIsSent] = useState(false)
     const [isSending, SetIsSending] = useState(false);
 
     const [errors, setErrors] = useState({})
@@ -48,6 +50,7 @@ export const ContactSection = () => {
         e.preventDefault();
 
         SetIsSending(true)
+        setIsSent(false)
         try {
 
             // const res = await fetch('/api/contact-mail', {
@@ -86,15 +89,18 @@ export const ContactSection = () => {
                 })
 
                 setErrors({})
+                setIsSent(true)
                 setToast("Email Sent Successfully!")
+                setToastSubtitle("Your message has been sent. I’ll get back to you soon.")
                 setTimeout(() => {
                     setToast("")
                 }, 3000)
 
             }
         } catch (error) {
-             setToast("Something went wrong. Please try again.");
-
+            setIsSent(false)
+            setToast("Something went wrong.");
+            setToastSubtitle("Please try again.")
             setTimeout(() => {
                 setToast("");
             }, 3000);
@@ -126,20 +132,43 @@ export const ContactSection = () => {
                 <div className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
                     <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-[#060a1d]/95 px-10 py-8 shadow-[0_24px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl animate-in zoom-in-95 duration-300">
                         
-                        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-cyan-300/20 bg-cyan-400/10">
+                        <div 
+                            className={`flex h-14 w-14 items-center justify-center rounded-full border ${
+                                isSent 
+                                    ? "border-cyan-300/20 bg-cyan-400/10" 
+                                    : "border-red-400/20 bg-red-500/10"
+                            }`}
+                        >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-8 w-8 text-cyan-300"
+                                className={`h-8 w-8 ${
+                                    isSent ? "text-cyan-300" : "text-red-400"
+                                }`}
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
                                 strokeWidth={3}
                             >
-                                <path 
-                                    strokeLinecap="round" 
-                                    strokeLinejoin="round" 
-                                    d="M5 13l4 4L19 7" 
-                                />
+                                {isSent ? (
+                                    <path 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        d="M5 13l4 4L19 7" 
+                                    />
+                                ) : (
+                                    <>
+                                        <path 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round" 
+                                            d="M6 18L18 6" 
+                                        />
+                                        <path 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round" 
+                                            d="M6 6l12 12" 
+                                        />
+                                    </>
+                                )}
                             </svg>
                         </div>
 
@@ -148,7 +177,7 @@ export const ContactSection = () => {
                         </p>
 
                         <p className="text-sm text-white/50 text-center">
-                            Your message has been sent. I’ll get back to you soon.
+                            {toastSubtitle}
                         </p>
                     </div>
                 </div>
