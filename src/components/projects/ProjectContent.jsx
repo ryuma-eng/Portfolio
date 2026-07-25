@@ -46,17 +46,17 @@ export const ProjectContent = ({ project, onBack, variant = "page" }) => {
                         </p>
 
                         <div className="mt-8 flex flex-wrap gap-4">
-                            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3">
+                            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 sm-px-5 py-3">
                                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary">
                                     <Code2 className="h-4 w-4" />
                                 </span>
                                 <div>
                                     <p className="text-lg font-bold leading-none text-white">{techStack.length}</p>
-                                    <p className="mt-1 text-xs text-white/55">Total Technologies</p>
+                                    <p className="mt-1 text-xs text-white/55 flex flex-row">Technologies</p>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-5 py-3">
+                            <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 px-4 sm-px-5 py-3">
                                 <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-primary/15 text-primary">
                                     <Layers className="h-4 w-4" />
                                 </span>

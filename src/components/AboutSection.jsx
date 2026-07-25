@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Award, Download, FolderOpen, Globe } from "lucide-react";
-import rjImage from "../assets/rj-profile.png";
+// import rjImage from "../assets/rj-profile.png";
+import rjImage from "../assets/rj-grad-pic.png";
 import resumePdf from "../assets/DAVID_RICARDO_JOSE_C_RESUME (1).pdf";
 
 const stats = [
