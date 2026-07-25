@@ -90,7 +90,7 @@ export const ContactSection = () => {
                 setErrors({})
                 setIsSent(true)
                 setToast("Email Sent Successfully!")
-                setToastSubtitle("Your message has been sent. I’ll get back to you soon.")
+                setToastSubtitle("I’ll get back to you soon.")
                 setTimeout(() => {
                     setToast("")
                 }, 3000)
