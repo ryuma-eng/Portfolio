@@ -316,7 +316,7 @@ export const ContactSection = () => {
 
                             <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                                 <p className="text-xs leading-6 text-white/45 sm:max-w-sm">
-                                    Clicking send opens your email app with a draft addressed to me.
+                                    Clicking Send emails you and the developer.
                                 </p>
 
                                 <button

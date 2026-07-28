@@ -25,7 +25,7 @@ export const projectsData = {
         title: "SkinCipher",
         description: "A web-based e-commerce platform that provides customers with a seamless shopping experience by allowing them to browse, explore, and purchase skincare products online. The system offers convenient product discovery, secure transactions, and an organized product management process to improve customer engagement and enhance the overall online shopping experience.",
         image: skincipherImg,
-        liveDemo: "#", 
+        liveDemo: "", 
         repository: "https://github.com/ryuma-eng/SkinCipher.git", 
         techStack: ["PHP", "JavaScript", "HTML", "CSS", "Bootstrap"], 
         keyFeatures: [
@@ -40,7 +40,7 @@ export const projectsData = {
         title: "Mitigation Men",
         description: "A web-based platform that showcases professional mitigation and restoration services, allowing clients to explore the company's expertise, learn about available services, request assistance, and easily connect with the team. The platform provides service information, project showcases, and convenient communication channels to improve customer engagement and streamline service inquiries.",
         image: mitigationMenImg,
-        liveDemo: "#", 
+        liveDemo: "https://mitigationmen.com/", 
         repository: "", 
         techStack: ["Wordpress", "Spectra", "Astra"], 
         keyFeatures: [

@@ -42,7 +42,7 @@ const projects = [
         description: "A web-based e-commerce platform that enables customers to browse, purchase, and explore skincare products through a seamless, user-friendly shopping experience.",
         tags: ["PHP", "JavaScript", "E-commerce"],
         image: skincipherImg,
-        liveDemo: "https://inven-track.com/"
+        liveDemo: ""
     },
     {
         slug: "mitigationmen",
@@ -50,7 +50,7 @@ const projects = [
         description: "A web-based platform that showcases the professional mitigation and restoration services, helping clients learn about the company,request assistance, and connect with the team.",
         tags: ["Business Website", "Service Platform", "Restoration Services"],
         image: mitigationMenImg,
-        liveDemo: "https://inven-track.com/"
+        liveDemo: ""
     },
     // {
     //     title: "6 Mary's Hotel Management System",
@@ -187,9 +187,10 @@ const PortfolioSection = () => {
                                     ))}
                                 </div>
 
-                                <div className="mt-auto flex items-center justify-between gap-3 pt-5">
+                                {/* <div className="mt-auto flex items-center justify-between gap-3 pt-5">
                                     <a
                                         href={project.liveDemo}
+                                        target="_blank"
                                         className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-200 transition-colors hover:text-white"
                                     >
                                         Live Demo
@@ -204,17 +205,18 @@ const PortfolioSection = () => {
                                         Details
                                         <ArrowRight className="h-4 w-4" />
                                     </Link>
-                                </div>
+                                </div> */}
 
-                                {/* <div className="mt-auto flex justify-end pt-5">
-                                    <a
-                                        href="#contact"
+                                <div className="mt-auto flex justify-end pt-5">
+                                    <Link 
+                                        to={`/projects/${project.slug}`}
+                                        state={{backgroundLocation: location}}
                                         className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-white/20 hover:bg-white/10"
                                     >
                                         Details
                                         <ArrowRight className="h-4 w-4" />
-                                    </a>
-                                </div> */}
+                                    </Link>
+                                </div>
                             </div>
                         </article>
                     ))}

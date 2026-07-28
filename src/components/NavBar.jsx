@@ -1,6 +1,7 @@
 import { cn } from "../lib/utils";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const navItems = [
     { name: "Home", href: "#hero" },
@@ -10,12 +11,17 @@ const navItems = [
 ];
 
 export const NavBar = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isHome = location.pathname === "/";
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeItem, setActiveItem] = useState("Home");
 
     const syncActiveItemToViewport = () => {
+        if (!isHome) return;
+
         const viewportCenter = window.scrollY + window.innerHeight * 0.45;
 
         const currentItem = navItems.reduce((current, item) => {
@@ -39,9 +45,7 @@ export const NavBar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-
             setIsScrolled(window.scrollY > 10);
-
         };
         window.addEventListener("scroll", handleScroll);
         handleScroll();
@@ -51,40 +55,45 @@ export const NavBar = () => {
     }, []);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const visibleEntry = entries
-                    .filter((entry) => entry.isIntersecting)
-                    .sort((first, second) => second.intersectionRatio - first.intersectionRatio)[0];
+        if (!isHome) return;
 
-                if (!visibleEntry) {
-                    return;
-                }
+        let frame;
+        const handleScrollSpy = () => {
+            cancelAnimationFrame(frame);
+            frame = requestAnimationFrame(syncActiveItemToViewport);
+        };
 
-                const currentItem = navItems.find((item) => item.href === `#${visibleEntry.target.id}`);
-
-                if (currentItem) {
-                    setActiveItem(currentItem.name);
-                }
-            },
-            {
-                threshold: [0.2, 0.4, 0.6],
-                rootMargin: "-18% 0px -60% 0px",
-            }
-        );
-
-        const sections = navItems
-            .map((item) => document.querySelector(item.href))
-            .filter(Boolean);
-
-        sections.forEach((section) => observer.observe(section));
-
+        window.addEventListener("scroll", handleScrollSpy, { passive: true });
+        window.addEventListener("resize", handleScrollSpy);
         syncActiveItemToViewport();
 
         return () => {
-            observer.disconnect();
+            cancelAnimationFrame(frame);
+            window.removeEventListener("scroll", handleScrollSpy);
+            window.removeEventListener("resize", handleScrollSpy);
         };
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isHome]);
+
+    useEffect(() => {
+        if (!isHome || !location.hash) return;
+
+        const id = location.hash.slice(1);
+        let frame;
+
+        const tryScroll = () => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+                setActiveItem(navItems.find((item) => item.href === location.hash)?.name ?? "Home");
+            } else {
+                frame = requestAnimationFrame(tryScroll);
+            }
+        };
+
+        frame = requestAnimationFrame(tryScroll);
+        return () => cancelAnimationFrame(frame);
+    }, [isHome, location.hash]);
 
     const handleMenuToggle = () => {
         if (!isMenuOpen) {
@@ -92,6 +101,19 @@ export const NavBar = () => {
         }
 
         setIsMenuOpen((prev) => !prev);
+    };
+
+    const handleNavClick = (event, item) => {
+        event.preventDefault();
+        setIsMenuOpen(false);
+
+        if (isHome) {
+            const section = document.querySelector(item.href);
+            section?.scrollIntoView({ behavior: "smooth" });
+            setActiveItem(item.name);
+        } else {
+            navigate(`/${item.href}`);
+        }
     };
 
     const linkClassName = (itemName, mobile = false) =>
@@ -118,7 +140,8 @@ export const NavBar = () => {
                     {navItems.map((item) => (
                         <a
                             key={item.name}
-                            href={item.href}
+                            href={`/${item.href}`}
+                            onClick={(event) => handleNavClick(event, item)}
                             aria-current={activeItem === item.name ? "page" : undefined}
                             className={linkClassName(item.name)}
                         >
@@ -147,10 +170,10 @@ export const NavBar = () => {
                         {navItems.map((item) => (
                             <a
                                 key={item.name}
-                                href={item.href}
+                                href={`/${item.href}`}
+                                onClick={(event) => handleNavClick(event, item)}
                                 aria-current={activeItem === item.name ? "page" : undefined}
                                 className={linkClassName(item.name, true)}
-                                onClick={() => setIsMenuOpen(false)}
                             >
                                 {item.name}
                             </a>
