@@ -19,6 +19,7 @@ import cert3 from "../assets/portfolio/certificates/3.png";
 import inventrackImg from "../assets/portfolio/projects/inventrack.png";
 import skincipherImg from "../assets/portfolio/projects/skincipher.png";
 import mitigationMenImg from "../assets/portfolio/projects/mitigationmen.png";
+import ticketsystem from "../assets/portfolio/projects/ticketsystem.png";
 import { Link, useLocation } from "react-router-dom";
 
 const tabs = [
@@ -34,7 +35,15 @@ const projects = [
         description: "A web-based Point-of-Sale (POS) and Inventory Management System that streamlines sales transactions, tracks inventory in real time, and provides descriptive analytics to support informed business decisions.",
         tags: ["PHP", "Laravel", "Web App"],
         image: inventrackImg,
-        liveDemo: "https://inven-track.com/"
+        liveDemo: ""
+    },
+    {
+        slug: "ticketingsystem",
+        title: "IT Ticketing System",
+        description: "A full-stack web application designed to streamline IT support operations through ticket management, technician assignment, status tracking, and real-time notifications. Built with Laravel, React, and MySQL, it features role-based access control for Administrators, Technicians, and Staff, enabling efficient issue resolution and improved workflow management.",
+        tags: ["Laravel", "React", "MySQL"],
+        image: ticketsystem,
+        liveDemo: ""
     },
     {
         slug: "skincipher",   
